@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远程工作三年：我的效率与平衡之道 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: inherit; }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: inherit; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+        .dark .prose p { color: #9ca3af; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; color: #4b5563; }
+        .dark .prose li { color: #9ca3af; }
+        .prose code { background: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #ef4444; }
+        .dark .prose code { background: #374151; color: #fca5a5; }
+        .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; font-style: italic; color: #6b7280; margin-bottom: 1.25rem; }
+        .dark .prose blockquote { color: #9ca3af; }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold gradient-text">Blog</a>
+                <div class="flex items-center space-x-6">
+                    <a href="../index.html#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">返回文章列表</a>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-medium">生活</span>
+            <span>·</span>
+            <span>2026年6月5日</span>
+            <span>·</span>
+            <span>5 分钟阅读</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">远程工作三年：我的效率与平衡之道</h1>
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500"></div>
+            <div>
+                <div class="font-medium">子恒</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">全栈开发者</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="prose dark:prose-invert max-w-none">
+            
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400 mb-8">
+                2023 年，我开始了远程工作。三年过去，我从一个需要办公室氛围才能专注的人，变成了能在任何地方高效工作的"数字游民"。这段旅程有挑战，也有收获。
+            </p>
+
+            <h2>为什么选择远程工作？</h2>
+            <p>
+                起初是因为疫情被迫居家办公，但很快我发现远程工作带来的自由。不用通勤、灵活安排时间、可以在喜欢的环境下工作——这些优势让我决定长期远程。
+            </p>
+            <p>
+                但自由也意味着自律。没有同事的监督，没有固定的上下班时间，很容易陷入"工作与生活界限模糊"的困境。
+            </p>
+
+            <h2>我的远程工作装备</h2>
+            <p>
+                好的装备是高效远程工作的基础：
+            </p>
+            <ul>
+                <li><strong>升降桌 + 人体工学椅</strong>：保护腰椎，久坐不累</li>
+                <li><strong>双显示器</strong>：一个写代码，一个查文档/测试</li>
+                <li><strong>降噪耳机</strong>：隔绝环境噪音，专注编码</li>
+                <li><strong>机械键盘</strong>：提升打字体验，虽然有点吵</li>
+                <li><strong>良好的网络</strong>：视频会议不卡顿是基本要求</li>
+            </ul>
+
+            <h2>时间管理：番茄工作法 + 时间块</h2>
+            <p>
+                我采用混合时间管理策略：
+            </p>
+            <ol>
+                <li><strong>上午 9:00-12:00</strong>：深度工作时间，处理复杂任务</li>
+                <li><strong>中午 12:00-13:30</strong>：午餐 + 休息，远离电脑</li>
+                <li><strong>下午 14:00-17:00</strong>：协作时间，开会、Code Review</li>
+                <li><strong>晚上 17:00 后</strong>：原则上不工作，除非紧急</li>
+            </ol>
+            <p>
+                每个工作时段内，我用番茄工作法（25 分钟专注 + 5 分钟休息）保持专注度。
+            </p>
+
+            <h2>保持社交连接</h2>
+            <p>
+                远程工作最大的挑战是孤独感。我的解决方案：
+            </p>
+            <ul>
+                <li>每周至少一次线下和朋友聚会</li>
+                <li>参加技术社区活动，认识同行</li>
+                <li>在咖啡馆工作，感受人群氛围</li>
+                <li>团队定期视频"咖啡时间"，不谈工作</li>
+            </ul>
+
+            <blockquote>
+                "远程工作不是逃避社交，而是重新定义社交的方式。"
+            </blockquote>
+
+            <h2>工作与生活平衡</h2>
+            <p>
+                最容易犯的错误是把工作渗透到生活的每个角落。我的边界设定：
+            </p>
+            <ul>
+                <li>工作电脑和生活电脑分开</li>
+                <li>下班后关闭工作通知</li>
+                <li>设定"下班仪式"：整理桌面、写下明日计划</li>
+                <li>周末完全不碰工作相关的事</li>
+            </ul>
+
+            <h2>给远程工作新人的建议</h2>
+            <p>
+                如果你刚开始远程工作，记住这几点：
+            </p>
+            <ol>
+                <li>先建立规律，再追求灵活</li>
+                <li>沟通要主动，不要等别人来找你</li>
+                <li>定期复盘，调整工作方式</li>
+                <li>不要忽视身体健康，定时运动</li>
+            </ol>
+
+            <h2>总结</h2>
+            <p>
+                远程工作三年，我最大的收获是学会了自我管理。它不适合所有人，但如果你能建立良好的工作习惯，它会给你的生活带来前所未有的自由。
+            </p>
+            <p>
+                你也在远程工作吗？有什么心得或困惑？欢迎交流！
+            </p>
+
+        </div>
+
+        <!-- Tags -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">远程工作</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">效率</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">生活方式</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+            <a href="react-performance.html" class="text-primary-600 dark:text-primary-400 hover:underline">← 上一篇：React 性能优化</a>
+            <a href="minimal-design.html" class="text-primary-600 dark:text-primary-400 hover:underline">下一篇：极简主义设计 →</a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm"> 2026 我的个人博客. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>

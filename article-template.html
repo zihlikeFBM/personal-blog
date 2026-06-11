@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章标题 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: inherit; }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: inherit; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+        .dark .prose p { color: #9ca3af; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; color: #4b5563; }
+        .dark .prose li { color: #9ca3af; }
+        .prose code { background: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #ef4444; }
+        .dark .prose code { background: #374151; color: #fca5a5; }
+        .prose pre { background: #1f2937; color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.25rem; }
+        .prose pre code { background: transparent; color: inherit; padding: 0; }
+        .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; font-style: italic; color: #6b7280; margin-bottom: 1.25rem; }
+        .dark .prose blockquote { color: #9ca3af; }
+        .prose img { border-radius: 0.5rem; margin: 1.5rem 0; }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold gradient-text">Blog</a>
+                <div class="flex items-center space-x-6">
+                    <a href="../index.html#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">返回文章列表</a>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <span class="px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium">分类标签</span>
+            <span>·</span>
+            <span>2026年6月10日</span>
+            <span>·</span>
+            <span>8 分钟阅读</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">文章标题</h1>
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-purple-500"></div>
+            <div>
+                <div class="font-medium">作者名字</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">全栈开发者</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="prose dark:prose-invert max-w-none">
+            
+            <!-- 文章正文开始 -->
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400 mb-8">
+                这里是文章导语，用一两句话概括文章的核心内容，吸引读者继续阅读...
+            </p>
+
+            <h2>第一章节标题</h2>
+            <p>
+                这里是正文内容。你可以写技术教程、生活感悟、项目经验等。支持使用 <strong>粗体</strong>、<<em>斜体</em>、<<code>代码</code> 等格式。
+            </p>
+            
+            <p>
+                多写几段，让文章有深度。可以分享你的思考过程、遇到的坑、解决方案等。
+            </p>
+
+            <h2>代码示例</h2>
+            <pre><code>// 示例代码
+function hello() {
+    console.log("Hello, World!");
+}</code></pre>
+
+            <h2>列表示例</h2>
+            <ul>
+                <li>第一点：重要的内容</li>
+                <li>第二点：补充说明</li>
+                <li>第三点：总结归纳</li>
+            </ul>
+
+            <h2>引用</h2>
+            <blockquote>
+                这是一段引用文字，可以用来强调某个观点或引用名人名言。
+            </blockquote>
+
+            <h2>总结</h2>
+            <p>
+                总结全文，给出行动建议或开放性问题，引导读者互动。
+            </p>
+
+        </div>
+
+        <!-- Tags -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">标签1</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">标签2</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">标签3</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+            <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">← 上一篇</a>
+            <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">下一篇 →</a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm"> 2026 我的个人博客. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>

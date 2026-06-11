@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构建高性能 React 应用的最佳实践 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: inherit; }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: inherit; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+        .dark .prose p { color: #9ca3af; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; color: #4b5563; }
+        .dark .prose li { color: #9ca3af; }
+        .prose code { background: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #ef4444; }
+        .dark .prose code { background: #374151; color: #fca5a5; }
+        .prose pre { background: #1f2937; color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.25rem; }
+        .prose pre code { background: transparent; color: inherit; padding: 0; }
+        .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; font-style: italic; color: #6b7280; margin-bottom: 1.25rem; }
+        .dark .prose blockquote { color: #9ca3af; }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold gradient-text">Blog</a>
+                <div class="flex items-center space-x-6">
+                    <a href="../index.html#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">返回文章列表</a>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <span class="px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium">技术</span>
+            <span>·</span>
+            <span>2026年6月10日</span>
+            <span>·</span>
+            <span>8 分钟阅读</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">构建高性能 React 应用的最佳实践</h1>
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-purple-500"></div>
+            <div>
+                <div class="font-medium">子恒</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">全栈开发者</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="prose dark:prose-invert max-w-none">
+            
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400 mb-8">
+                React 性能优化是每个前端开发者必须掌握的技能。本文将从组件渲染、状态管理、代码分割等多个维度，分享我在实际项目中总结的最佳实践。
+            </p>
+
+            <h2>为什么需要性能优化？</h2>
+            <p>
+                随着应用规模的增长，React 组件树会变得越来越复杂。如果不加以优化，不必要的重渲染会导致页面卡顿，用户体验下降。常见的性能问题包括：
+            </p>
+            <ul>
+                <li>父组件更新导致所有子组件重新渲染</li>
+                <li>大型列表渲染造成主线程阻塞</li>
+                <li>不必要的计算和副作用执行</li>
+                <li>过大的 bundle 体积导致加载缓慢</li>
+            </ul>
+
+            <h2>1. 使用 React.memo 避免不必要的渲染</h2>
+            <p>
+                <code>React.memo</code> 是一个高阶组件，它会对组件的 props 进行浅比较，如果 props 没有变化，则跳过渲染。
+            </p>
+            <pre><code>import React, { memo } from 'react';
+
+const UserCard = memo(({ name, avatar }) => {
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;img src={avatar} alt={name} /&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+    &lt;/div&gt;
+  );
+});
+
+// 现在只有当 name 或 avatar 变化时，UserCard 才会重新渲染</code></pre>
+            <p>
+                但需要注意，<<code>memo</code> 不是银弹。如果组件的 props 经常变化，或者组件本身渲染成本很低，使用 <code>memo</code> 反而会增加比较的开销。
+            </p>
+
+            <h2>2. 使用 useMemo 和 useCallback 缓存计算</h2>
+            <p>
+                对于昂贵的计算，使用 <code>useMemo</code> 缓存结果；对于传递给子组件的函数，使用 <code>useCallback</code> 保持引用稳定。
+            </p>
+            <pre><code>import { useMemo, useCallback } from 'react';
+
+function DataTable({ data, filter }) {
+  // 缓存过滤后的数据
+  const filteredData = useMemo(() => {
+    return data.filter(item => item.name.includes(filter));
+  }, [data, filter]);
+
+  // 缓存事件处理函数
+  const handleSort = useCallback((column) => {
+    console.log('Sorting by:', column);
+  }, []);
+
+  return &lt;Table data={filteredData} onSort={handleSort} /&gt;;
+}</code></pre>
+
+            <h2>3. 虚拟列表优化长列表</h2>
+            <p>
+                当需要渲染成千上万条数据时，虚拟列表（Virtual List）是最佳解决方案。它只渲染可视区域内的元素，大幅减少 DOM 节点数量。
+            </p>
+            <pre><code>import { useVirtualizer } from '@tanstack/react-virtual';
+
+function VirtualList({ items }) {
+  const parentRef = useRef();
+  
+  const virtualizer = useVirtualizer({
+    count: items.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 50,
+  });
+
+  return (
+    &lt;div ref={parentRef} style={{ height: '400px', overflow: 'auto' }}&gt;
+      &lt;div style={{ height: `${virtualizer.getTotalSize()}px` }}&gt;
+        {virtualizer.getVirtualItems().map(virtualItem => (
+          &lt;div key={virtualItem.key} style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: `${virtualItem.size}px`,
+            transform: `translateY(${virtualItem.start}px)`,
+          }}&gt;
+            {items[virtualItem.index]}
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h2>4. 代码分割与懒加载</h2>
+            <p>
+                使用 <code>React.lazy</code> 和 <code>Suspense</code> 实现路由级别的代码分割，减少首屏加载时间。
+            </p>
+            <pre><code>import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const Home = lazy(() => import('./pages/Home'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Settings = lazy(() => import('./pages/Settings'));
+
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Suspense fallback={&lt;LoadingSpinner /&gt;}&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+          &lt;Route path="/dashboard" element={&lt;Dashboard /&gt;} /&gt;
+          &lt;Route path="/settings" element={&lt;Settings /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/Suspense&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}</code></pre>
+
+            <h2>5. 状态管理优化</h2>
+            <p>
+                避免将状态提升到不必要的层级。使用状态管理库（如 Zustand、Jotai）时，注意选择粒度合适的状态单元。
+            </p>
+            <blockquote>
+                "性能优化的黄金法则：不要过早优化，但也不要忽视明显的性能问题。"
+            </blockquote>
+
+            <h2>总结</h2>
+            <p>
+                React 性能优化是一个持续的过程。建议：
+            </p>
+            <ol>
+                <li>使用 React DevTools Profiler 找出性能瓶颈</li>
+                <li>优先优化影响用户体验的关键路径</li>
+                <li>保持代码可读性，不要为了优化而过度复杂化</li>
+                <li>定期使用 Lighthouse 进行性能审计</li>
+            </ol>
+            <p>
+                希望这些实践能帮助你的 React 应用跑得更快。如果你有其他优化技巧，欢迎在评论区分享！
+            </p>
+
+        </div>
+
+        <!-- Tags -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">React</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">性能优化</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">前端</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+            <span class="text-gray-400">← 上一篇</span>
+            <a href="remote-work.html" class="text-primary-600 dark:text-primary-400 hover:underline">下一篇：远程工作三年 →</a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm"> 2026 我的个人博客. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>

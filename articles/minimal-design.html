@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简主义设计：少即是多的艺术 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: inherit; }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: inherit; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+        .dark .prose p { color: #9ca3af; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; color: #4b5563; }
+        .dark .prose li { color: #9ca3af; }
+        .prose code { background: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #ef4444; }
+        .dark .prose code { background: #374151; color: #fca5a5; }
+        .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; font-style: italic; color: #6b7280; margin-bottom: 1.25rem; }
+        .dark .prose blockquote { color: #9ca3af; }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-2xl font-bold gradient-text">Blog</a>
+                <div class="flex items-center space-x-6">
+                    <a href="../index.html#articles" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">返回文章列表</a>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <span class="px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-medium">设计</span>
+            <span>·</span>
+            <span>2026年5月28日</span>
+            <span>·</span>
+            <span>6 分钟阅读</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">极简主义设计：少即是多的艺术</h1>
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
+            <div>
+                <div class="font-medium">子恒</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">全栈开发者</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="prose dark:prose-invert max-w-none">
+            
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400 mb-8">
+                在这个信息过载的时代，极简主义设计不仅是一种美学选择，更是一种对用户的尊重。它让核心内容脱颖而出，减少认知负担，创造更愉悦的体验。
+            </p>
+
+            <h2>什么是极简主义设计？</h2>
+            <p>
+                极简主义不等于"简单"或"空白"。它的核心在于<strong>去除一切不必要的元素，保留最本质的内容</strong>。就像日本禅宗美学中的"侘寂"——在不完美中寻找美，在留白中感受宁静。
+            </p>
+
+            <h2>极简设计的四大原则</h2>
+
+            <h3>1. 留白（Negative Space）</h3>
+            <p>
+                留白不是浪费空间，而是给内容呼吸的权利。恰当的留白能：
+            </p>
+            <ul>
+                <li>引导用户视线聚焦重要内容</li>
+                <li>建立视觉层次和信息优先级</li>
+                <li>营造高端、优雅的品牌感</li>
+            </ul>
+            <p>
+                苹果官网是留白的典范。大量留白让产品图片成为绝对主角，用户一眼就能看到核心信息。
+            </p>
+
+            <h3>2. 克制用色</h3>
+            <p>
+                极简设计通常采用有限的配色方案：
+            </p>
+            <ul>
+                <li><strong>单色系</strong>：同一颜色的不同明度</li>
+                <li><strong>双色系</strong>：黑白 + 一种强调色</li>
+                <li><strong>自然色系</strong>：米白、浅灰、原木色</li>
+            </ul>
+            <p>
+                颜色越少，每种颜色的表现力就越强。当你只用一种强调色时，用户会立刻知道哪里可以点击。
+            </p>
+
+            <h3>3. 精简排版</h3>
+            <p>
+                字体选择体现品味。极简设计通常：
+            </p>
+            <ul>
+                <li>全站不超过 2 种字体</li>
+                <li>利用字重（Weight）和字号建立层次</li>
+                <li>行高保持在 1.5-1.8 之间，提升可读性</li>
+                <li>避免过多装饰性文字效果</li>
+            </ul>
+
+            <h3>4. 功能优先</h3>
+            <p>
+                每个元素都必须有其存在的理由。问自己：
+            </p>
+            <blockquote>
+                "这个元素是否帮助用户完成任务？如果删除它，体验会变差吗？"
+            </blockquote>
+            <p>
+                如果答案是否定的，那就删除它。
+            </p>
+
+            <h2>极简主义在 UI 设计中的应用</h2>
+            <p>
+                作为开发者，我如何在项目中实践极简设计？
+            </p>
+            <ol>
+                <li><strong>减少按钮数量</strong>：一个页面不超过 3 个主要操作</li>
+                <li><strong>隐藏次要功能</strong>：用"更多"菜单收纳不常用操作</li>
+                <li><strong>统一交互模式</strong>：相同的操作用相同的方式完成</li>
+                <li><strong>渐进式披露</strong>：先展示核心，需要时再展开细节</li>
+            </ol>
+
+            <h2>极简不等于简陋</h2>
+            <p>
+                很多人误解极简主义就是"什么都不做"。恰恰相反，极简需要更多思考：
+            </p>
+            <ul>
+                <li>每个像素都要经过斟酌</li>
+                <li>交互细节要打磨到极致</li>
+                <li>动画过渡要自然流畅</li>
+                <li>空状态也要有设计感</li>
+            </ul>
+            <p>
+                就像日本建筑师安藤忠雄说的："极简是极致的复杂。"
+            </p>
+
+            <h2>我的极简设计工具箱</h2>
+            <p>
+                推荐一些帮助我实践极简设计的工具：
+            </p>
+            <ul>
+                <li><strong>Figma</strong>：设计原型，组件化设计系统</li>
+                <li><strong>Tailwind CSS</strong>：原子化 CSS，快速实现干净界面</li>
+                <li><strong>Google Fonts</strong>：精选 2-3 款优质字体</li>
+                <li><strong>Coolors</strong>：生成和谐的配色方案</li>
+            </ul>
+
+            <h2>总结</h2>
+            <p>
+                极简主义设计是一种思维方式，而非固定风格。它教会我们：
+            </p>
+            <ol>
+                <li>尊重用户的注意力</li>
+                <li>内容比装饰更重要</li>
+                <li>留白是设计的一部分</li>
+                <li>克制比堆砌更难，也更有价值</li>
+            </ol>
+            <p>
+                下次设计界面时，试着删除一个元素，看看体验是否反而更好了。
+            </p>
+
+        </div>
+
+        <!-- Tags -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">设计</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">UI/UX</span>
+                <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-400">极简主义</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+            <a href="remote-work.html" class="text-primary-600 dark:text-primary-400 hover:underline">← 上一篇：远程工作三年</a>
+            <span class="text-gray-400">下一篇 →</span>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm"> 2026 我的个人博客. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>
